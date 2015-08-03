@@ -10,6 +10,7 @@ require $dir . '/app/assets.php';
 require $dir . '/app/custom_posts.php';
 require $dir . '/app/menus.php';
 require $dir . '/app/sidebars.php';
+require $dir . '/inc/required_plugins.php';
 
 
 // DB Replace. Commenter une fois en prod

@@ -179,3 +179,11 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove
 
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
+
+
+function script_loader_src_example( $src ) {
+    return remove_query_arg( 'ver', $src );
+}
+ 
+add_filter( 'script_loader_src', 'script_loader_src_example' );
+add_filter( 'style_loader_src', 'script_loader_src_example' );

@@ -54,3 +54,20 @@ function df_disable_comments_admin_bar() {
     }
 }
 add_action('init', 'df_disable_comments_admin_bar');
+
+
+ // Saving the Real IP Address of the Commenter
+function pre_comment_user_ip_example() {
+    $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
+    if ( !empty( $_SERVER['X_FORWARDED_FOR'] ) ) {
+        $X_FORWARDED_FOR = explode( ',', $_SERVER['X_FORWARDED_FOR'] );
+        if ( !empty( $X_FORWARDED_FOR ) )
+            $REMOTE_ADDR = trim( $X_FORWARDED_FOR[0] );
+    } elseif( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+        $HTTP_X_FORWARDED_FOR = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+        if ( !empty( $HTTP_X_FORWARDED_FOR ) )
+            $REMOTE_ADDR = trim( $HTTP_X_FORWARDED_FOR[0] );
+    }
+    return preg_replace( '/[^0-9a-f:\., ]/si', '', $REMOTE_ADDR );
+}
+add_filter( 'pre_comment_user_ip', 'pre_comment_user_ip_example' );
