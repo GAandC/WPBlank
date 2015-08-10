@@ -1,5 +1,5 @@
 <?php
-    if(!WP_DEBUG) return;
+    if(!WP_DEBUG || !is_admin()) return;
 
     $required_plugins = array(
         "better-wp-security/better-wp-security.php" => "iThemes Security",

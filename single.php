@@ -1,11 +1,4 @@
-<?php
-/**
- * The template for displaying all single posts.
- *
- * @package Wordpress
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -17,16 +10,15 @@ get_header(); ?>
 			<?php the_post_navigation(); ?>
 
 			<?php
-				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :
 					comments_template();
 				endif;
 			?>
 
-		<?php endwhile; // End of the loop. ?>
+		<?php endwhile;  ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+		</main>
+	</div>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1,6 +1,6 @@
 <?php
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
-function html5wp_pagination()
+function gaandc_pagination()
 {
     global $wp_query;
     $big = 999999999;
@@ -12,4 +12,4 @@ function html5wp_pagination()
     ));
 }
 
-add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
+add_action('init', 'gaandc_pagination');

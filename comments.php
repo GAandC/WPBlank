@@ -1,26 +1,10 @@
 <?php
-/**
- * The template for displaying comments.
- *
- * The area of the page that contains both current comments
- * and the comment form.
- *
- * @package Wordpress
- */
-
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
-if ( post_password_required() ) {
-	return;
-}
+	if ( post_password_required() ) {
+		return;
+	}
 ?>
 
 <div id="comments" class="comments-area">
-
-	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
@@ -41,9 +25,9 @@ if ( post_password_required() ) {
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'wordpress' ) ); ?></div>
 				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'wordpress' ) ); ?></div>
 
-			</div><!-- .nav-links -->
-		</nav><!-- #comment-nav-above -->
-		<?php endif; // Check for comment navigation. ?>
+			</div>
+		</nav>
+		<?php endif; ?>
 
 		<ol class="comment-list">
 			<?php
@@ -52,7 +36,7 @@ if ( post_password_required() ) {
 					'short_ping' => true,
 				) );
 			?>
-		</ol><!-- .comment-list -->
+		</ol>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
@@ -62,11 +46,11 @@ if ( post_password_required() ) {
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'wordpress' ) ); ?></div>
 				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'wordpress' ) ); ?></div>
 
-			</div><!-- .nav-links -->
-		</nav><!-- #comment-nav-below -->
-		<?php endif; // Check for comment navigation. ?>
+			</div>
+		</nav>
+		<?php endif;  ?>
 
-	<?php endif; // Check for have_comments(). ?>
+	<?php endif;  ?>
 
 	<?php
 		// If comments are closed and there are comments, let's leave a little note, shall we?
@@ -77,4 +61,4 @@ if ( post_password_required() ) {
 
 	<?php comment_form(); ?>
 
-</div><!-- #comments -->
+</div>

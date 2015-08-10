@@ -1,5 +1,6 @@
 <?php
 
+
 function disable_wp_emojicons() {
     // all actions related to emojis
     remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -23,3 +24,13 @@ function disable_emojicons_tinymce( $plugins ) {
 }
 
 add_action( 'init', 'disable_wp_emojicons' );
+
+
+
+function wpc_disable_yoast_notifications() {
+  if (is_plugin_active('wordpress-seo/wp-seo.php')) {
+    remove_action('admin_notices', array(Yoast_Notification_Center::get(), 'display_notifications'));
+    remove_action('all_admin_notices', array(Yoast_Notification_Center::get(), 'display_notifications'));
+  }
+}
+add_action('admin_init', 'wpc_disable_yoast_notifications');

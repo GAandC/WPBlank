@@ -1,14 +1,13 @@
 <?php
 
 
-function register_html5_menu()
+function gaandc_register_menu()
 {
     register_nav_menus(array(
         'main_menu' => 'Menu principal'
     ));
 }
 
-// HTML5 Blank navigation
 function menu_principal()
 {
 	wp_nav_menu(
@@ -34,4 +33,4 @@ function menu_principal()
 }
 
 
-add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
+add_action('init', 'gaandc_register_menu'); 

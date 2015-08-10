@@ -1,24 +1,9 @@
-<?php
-/**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after
- *
- * @package Wordpress
- */
+	</div>
 
-?>
+	<footer  class="site-footer" role="contentinfo">
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wordpress' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'wordpress' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'wordpress' ), 'wordpress', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+	</footer>
+</div>
 
 <?php wp_footer(); ?>
 
