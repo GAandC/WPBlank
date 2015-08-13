@@ -14,3 +14,12 @@
         vc_disable_frontend(); // this will disable frontend editor
     }
     add_action( 'vc_after_init', 'vc_remove_frontend_links' );
+
+
+    // Ajouter une case à cocher pour ajouter un wrapper aux rows
+    vc_add_param("vc_row", array(
+        "type" => "checkbox",
+        "class" => "",
+        "heading" => "Use wrapper?",
+        "param_name" => "use_wrapper"
+    ));
