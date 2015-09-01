@@ -1,6 +1,6 @@
 <?php
 
-
+if(!defined('WP_DEBUG') || !WP_DEBUG) return;
 
 // SQL
 $database = array(
@@ -35,44 +35,44 @@ foreach($tables as $i=>$table)
                     {
                         $j = recursive_array_replace($source,$dest,$j);
                         $j = serialize($j);
-                        
+
                         sql_pexecute("UPDATE `".$table."` SET `".$column."`=? WHERE `".$column."`=?",array($j,$source_j));
                     }
                 }
-                
+
                 // Faire ensuite la modification pour les autres lignes.
                 sql_execute("UPDATE `".$table."` SET `".$column."` = replace(`".$column."`, '".$source."', '".$dest."') WHERE `".$column."` NOT LIKE 'a:%' AND `".$column."` LIKE '%".$source."%'");
             }
-            
-            
+
+
         }
-       
+
     }
-}   
+}
 
 
-function recursive_array_replace($find, $replace, $data) { 
-    if (is_array($data)) { 
-        foreach ($data as $key => $value) { 
-            if (is_array($value) || is_object($value)) { 
-                $data[$key] = recursive_array_replace($find, $replace, $value); 
-            } else { 
-                $data[$key] = str_replace($find, $replace, $value); 
-            } 
-        } 
+function recursive_array_replace($find, $replace, $data) {
+    if (is_array($data)) {
+        foreach ($data as $key => $value) {
+            if (is_array($value) || is_object($value)) {
+                $data[$key] = recursive_array_replace($find, $replace, $value);
+            } else {
+                $data[$key] = str_replace($find, $replace, $value);
+            }
+        }
     }
     else if(is_object($data))
     {
-        foreach ($data as $key => $value) { 
-            if (is_array($value || is_object($value))) { 
-                $data->$key = recursive_array_replace($find, $replace, $value); 
-            } else { 
-                $data->$key = str_replace($find, $replace, $value); 
-            } 
-        } 
-    } else { 
-        $data = str_replace($find, $replace, $data); 
-    } 
+        foreach ($data as $key => $value) {
+            if (is_array($value || is_object($value))) {
+                $data->$key = recursive_array_replace($find, $replace, $value);
+            } else {
+                $data->$key = str_replace($find, $replace, $value);
+            }
+        }
+    } else {
+        $data = str_replace($find, $replace, $data);
+    }
     return $data;
 }
 
@@ -80,43 +80,43 @@ function recursive_array_replace($find, $replace, $data) {
 
 
 
-class SimplePDO{	
+class SimplePDO{
 
     /*****************************
       ******* VARIABLES
        *****************************/
     private $_config,$_pdo,$_statement,$_cache_prepare=array();
     public $db;
-    
+
     /*****************************
       ******* CONSTRUCT
        *****************************/
-    
+
     function __construct($config)
     {
-        // Connexion 
-        try 
+        // Connexion
+        try
         {
             $this->_pdo = new PDO($config['type'].':host='.$config['host'].';dbname='.$config['database'], $config['user'], $config['pass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-            
+
             $this->_config = $config;
             $this->db = $config['database'];
-            
+
             // Configuration
-            
+
             $this->_pdo->setAttribute(PDO::ATTR_CASE,PDO::CASE_LOWER);
-            
+
             $this->_pdo->setAttribute(PDO::ATTR_ORACLE_NULLS,PDO::NULL_TO_STRING);
-            
-        } 
-        catch (PDOException $e) 
+
+        }
+        catch (PDOException $e)
         {
             print "Error : " . $e->getMessage() . "<br/>";
             die();
         }
     }
-    
-    
+
+
     /*****************************
       ******* PUBLIC
        *****************************/
@@ -124,8 +124,8 @@ class SimplePDO{
     {
 
         $is_prepare = $this->_is_prepare($sql);
-        
-        
+
+
         if($is_prepare)
         {
             $res = $sql->execute($params);
@@ -134,7 +134,7 @@ class SimplePDO{
         {
             $res = $this->_pdo->exec($sql);
         }
-       
+
         if($res === false)
         {
             $error = $is_prepare ? $sql->errorInfo() : $this->_pdo->errorInfo();
@@ -142,13 +142,13 @@ class SimplePDO{
             echo $error[2];
         }
         return $res;
-        
+
     }
-    
+
     public function query(&$sql,array $params=array())
     {
         $is_prepare = $this->_is_prepare($sql);
-        
+
         if($is_prepare = $this->_is_prepare($sql))
         {
             $res = $sql->execute($params);
@@ -164,24 +164,24 @@ class SimplePDO{
             echo $error[2];
         }
         return $res;
-        
+
     }
-    
-    
+
+
     public function fetch_first($sql,$col=null)
     {
         $statement = $this->query($sql);
         return $this->_get_first($statement,$col);
     }
-    
+
     public function fetch_all($sql,$col=null)
     {
         $statement = $this->query($sql);
         return $this->_get_all($statement,$col);
     }
-    
-    
-    
+
+
+
     public function prepare($sql,$fwdonly = false)
     {
         if(isset($this->_cache_prepare[$sql]))
@@ -204,7 +204,7 @@ class SimplePDO{
             }
         }
     }
-   
+
     public function prepare_first(PDOStatement $statement,array $params=array(),$col=null)
     {
         $this->query($statement,$params);
@@ -215,12 +215,12 @@ class SimplePDO{
         $this->query($statement,$params);
         return $this->_get_all($statement,$col);
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     public function clear($var)
     {
         return $this->_pdo->quote($var);
@@ -230,19 +230,19 @@ class SimplePDO{
     {
         return $this->_pdo->lastInsertId($name);
     }
-    
+
     public function close()
     {
         $this->_pdo = null;
     }
-    
+
     // Supprime tout ce qui n'est pas des lettres ou des _
     static function columnClear($column)
     {
         return preg_replace('[^a-zA-Z_]', '', $column);
     }
-    
-    
+
+
     // Importer un sql dump dans un fichier
     public function import_file($path)
     {
@@ -251,7 +251,7 @@ class SimplePDO{
         //      - Avoir le chemin de mysql dans le PATH
         exec("mysql -u ".$this->_config['user']." -p".$this->_config['pass']." -h ".$this->_config['host']." -D ".$this->_config['database']." < ".$path);
     }
-    
+
     /*****************************
       ******* PRIVATE
        *****************************/
@@ -259,8 +259,8 @@ class SimplePDO{
     {
         return !is_string($sql) && is_object($sql) && get_class($sql) == 'PDOStatement';
     }
-    
-    
+
+
     private function _get_first(PDOStatement $statement,$col=null)
     {
        if($statement)
@@ -298,8 +298,8 @@ class SimplePDO{
         }
         return array();
     }
-    
-    
+
+
 }
 
 
@@ -338,7 +338,7 @@ function sql_pexecute($statement, $params=array(),$fwdonly = false)
     {
         $params = array($params);
     }
-    
+
     if(is_string($statement))
     {
         $statement = $pdo->prepare($statement,$fwdonly);
@@ -353,7 +353,7 @@ function sql_pfirst($statement, $params=array(), $col=null,$fwdonly = false)
     {
         $params = array($params);
     }
-    
+
     if(is_string($statement))
     {
         $statement = $pdo->prepare($statement,$fwdonly);
@@ -367,7 +367,7 @@ function sql_pall($statement, $params=array(), $col=null,$fwdonly = false)
     {
         $params = array($params);
     }
-    
+
     if(is_string($statement))
     {
         $statement = $pdo->prepare($statement,$fwdonly);
