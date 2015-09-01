@@ -1,159 +1,502 @@
-.transition_all(@duration:0.2s, @ease:ease)
+/**
+ * Transition
+ */
+
+.transition_all(@duration :0.2s, @ease:ease)
 {
-	-webkit-transition: all @duration @ease;
-	-moz-transition: all @duration @ease;
-	-o-transition: all @duration @ease;
-	transition: all @duration @ease;
+	-webkit-transition           : all @duration @ease;
+	-moz-transition              : all @duration @ease;
+	-o-transition                : all @duration @ease;
+	transition                   : all @duration @ease;
 }
-.transition(@action:all, @duration:0.2s, @ease:ease)
-{
-	-webkit-transition: @action @duration @ease;
-	-moz-transition: @action @duration @ease;
-	-o-transition: @action @duration @ease;
-	transition: @action @duration @ease;
+.transition (@property : property, @duration: 0.2s, @timing: ease-out, @delay: 0) {
+  -webkit-transition             : @arguments;
+     -moz-transition             : @property @duration @timing ~"@{delay}s";
+       -o-transition             : @arguments; /* Opera 10.5+ */
+          transition             : @arguments;
 }
+
+
+/**
+ * Flexbox
+ */
 
 .box-flex()
 {
-	display:-webkit-box;
-	display:-webkit-flex;
-	display:-ms-flexbox;
-	display:flex;
+	display                      :-webkit-box;
+	display                      :-webkit-flex;
+	display                      :-ms-flexbox;
+	display                      :flex;
 }
 
 .box-orient(@orient)
 {
-    -webkit-box-orient: @orient;
-       -moz-box-orient: @orient;
-        -ms-box-orient: @orient;
-         -o-box-orient: @orient;
-            box-orient: @orient;
+    -webkit-box-orient           : @orient;
+       -moz-box-orient           : @orient;
+        -ms-box-orient           : @orient;
+         -o-box-orient           : @orient;
+            box-orient           : @orient;
 }
 .box-direction(@direction)
 {
-	-webkit-flex-direction:@direction;
-		-ms-flex-direction:@direction;
-			flex-direction:@direction;
+	-webkit-flex-direction       :@direction;
+		-ms-flex-direction       :@direction;
+			flex-direction       :@direction;
 }
 .box-wrap(@wrap)
 {
-	-webkit-flex-wrap:@wrap;
-		-ms-flex-wrap:@wrap;
-			flex-wrap:@wrap;
+	-webkit-flex-wrap            :@wrap;
+		-ms-flex-wrap            :@wrap;
+			flex-wrap            :@wrap;
 }
 .box-align-content(@align)
 {
-	-webkit-align-content:@align;
-		-ms-flex-line-pack:@align;
-			align-content:@align;
+	-webkit-align-content        :@align;
+		-ms-flex-line-pack       :@align;
+			align-content        :@align;
 }
 .box-align-content-start()
 {
-	-webkit-align-content: flex-start;
-            -ms-flex-line-pack: start;
-                align-content: flex-start;
+	-webkit-align-content        : flex-start;
+            -ms-flex-line-pack   : start;
+                align-content    : flex-start;
 }
 
 .box-align-items(@align)
 {
-	-webkit-box-align: @align;
-    -webkit-align-items: @align;
-    -ms-flex-align: @align;
-    align-items: @align;
+	-webkit-box-align            : @align;
+    -webkit-align-items          : @align;
+    -ms-flex-align               : @align;
+    align-items                  : @align;
 }
 
 .box-align-items-start()
 {
-	-webkit-box-align: start;
-	-webkit-align-items: flex-start;
-		-ms-flex-align: start;
-			align-items: flex-start;
+	-webkit-box-align            : start;
+	-webkit-align-items          : flex-start;
+		-ms-flex-align           : start;
+			align-items          : flex-start;
 }
 
 .box-justify(@align)
 {
-	-webkit-box-pack: @align;
-	-webkit-justify-content: @align;
-		-ms-flex-pack: @align;
-			justify-content: @align;
+	-webkit-box-pack             : @align;
+	-webkit-justify-content      : @align;
+		-ms-flex-pack            : @align;
+			justify-content      : @align;
 }
 
 .box-justify-start()
 {
-	-webkit-box-pack: start;
-	-webkit-justify-content: flex-start;
-		-ms-flex-pack: start;
-			justify-content: flex-start;
+	-webkit-box-pack             : start;
+	-webkit-justify-content      : flex-start;
+		-ms-flex-pack            : start;
+			justify-content      : flex-start;
 }
 
 .flex(@flex)
 {
-	-webkit-flex: @flex;
-		-ms-flex: @flex;
-			flex: @flex;
+	-webkit-flex                 : @flex;
+		-ms-flex                 : @flex;
+			flex                 : @flex;
 }
 
 .box-grow(@grow)
 {
-	-webkit-box-flex: @grow;
-	-webkit-flex-grow: @grow;
-		-ms-flex-positive: @grow;
-			flex-grow: @grow;
+	-webkit-box-flex             : @grow;
+	-webkit-flex-grow            : @grow;
+		-ms-flex-positive        : @grow;
+			flex-grow            : @grow;
 }
 
 .box-shrink(@shrink)
 {
-	-webkit-flex-shrink: @shrink;
-        -ms-flex-negative: @shrink;
-            flex-shrink: @shrink;
+	-webkit-flex-shrink          : @shrink;
+        -ms-flex-negative        : @shrink;
+            flex-shrink          : @shrink;
 }
 
 .box-basis(@basis)
 {
-	-webkit-flex-basis: @basis;
-		-ms-flex-preferred-size: @basis;
-			flex-basis: @basis;
+	-webkit-flex-basis           : @basis;
+		-ms-flex-preferred-size  : @basis;
+			flex-basis           : @basis;
 }
 
 .box-flow(@flow)
 {
-	-webkit-flex-flow: @flow;
-		-ms-flex-flow: @flow;
-			flex-flow: @flow;
+	-webkit-flex-flow            : @flow;
+		-ms-flex-flow            : @flow;
+			flex-flow            : @flow;
 }
 
 
+/**
+ * Gradient
+ */
 
-
-
-
-.transform(...) {
-  -webkit-transform: @arguments;
-  -moz-transform: @arguments;
-  -o-transform: @arguments;
-  -ms-transform: @arguments;
-  transform: @arguments;
-}
-
-.gradient-direction (@startColor: #555, @endColor: #333, @degrees: 45)
+.gradient-direction (@startColor : #555, @endColor: #333, @degrees: 45)
 {
-	background: @endColor;
-	background-image: -webkit-gradient(linear, ~"@{degrees}deg", from(@startColor), to(@endColor));
-	background-image: -webkit-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
-	background-image:    -moz-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
-	background-image:      -o-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
-	background-image:         linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+	background                   : @endColor;
+	background-image             : -webkit-gradient(linear, ~"@{degrees}deg", from(@startColor), to(@endColor));
+	background-image             : -webkit-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+	background-image             : -moz-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+	background-image             : -o-linear-gradient(~"@{degrees}deg", @startColor, @endColor);
+	background-image             : linear-gradient(~"@{degrees}deg", @startColor, @endColor);
 }
 
-.gradient-v(@startColor: #555, @endColor: #333)
+.gradient-h (@startColor : #EEE, @endColor: #FFF)
 {
-	background: @endColor;
-    background: -moz-linear-gradient(top,  @startColor 0%, @endColor 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@startColor), color-stop(100%,@endColor));
-    background: -webkit-linear-gradient(top,  @startColor 0%,@endColor 100%);
-    background: -o-linear-gradient(top,  @startColor 0%,@endColor 100%);
-    background: -ms-linear-gradient(top,  @startColor 0%,@endColor 100%);
-    background: linear-gradient(to bottom,  @startColor 0%,@endColor 100%);
+	background-color             : @endColor;
+	background-image             : -webkit-gradient(linear, left center, right center, from(@startColor),to(@endColor));
+	background-image             : -webkit-linear-gradient(left, @startColor, @endColor);
+	background-image             : -moz-linear-gradient(left, @startColor, @endColor);
+	background-image             : -o-linear-gradient(left, @startColor, @endColor);
+	background-image             : linear-gradient(left, @startColor, @endColor);
+	filter                       : e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=1, StartColorStr='%d', EndColorStr='%d')", @startColor, @endColor));
+}
 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=0 );
+.gradient-v (@startColor : #EEE, @endColor: #FFF)
+{
+	background-color             : mix(@startColor, @endColor, 60%);
+	background-image             : -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background-image             : -webkit-linear-gradient(top, @startColor, @endColor);
+	background-image             : -moz-linear-gradient(top, @startColor, @endColor);
+	background-image             : -o-linear-gradient(top, @startColor, @endColor);
+	background-image             : linear-gradient(top, @startColor, @endColor);
+	filter                       : e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='%d', EndColorStr='%d')", @startColor, @endColor));
+}
+
+.gradient-vline (@startColor : #B0BAC5, @middleColor1: #9DA7B2, @middleColor2: #919CA8, @endColor: #7E8A98)
+{
+    background                   : mix(@middleColor1, @middleColor2, 50%);
+    background-image             : -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(50%, @middleColor1), color-stop(51%, @middleColor2), color-stop(100%, @endColor));
+    background-image             : -webkit-linear-gradient(top, @startColor 0%, @middleColor1 50%, @middleColor2 51%, @endColor 100%);
+    background-image             : -moz-linear-gradient(top, @startColor 0%, @middleColor1 50%, @middleColor2 51%, @endColor 100%);
+    background-image             : -o-linear-gradient(top, @startColor 0%, @middleColor1 50%, @middleColor2 51%, @endColor 100%);
+    background-image             : linear-gradient(top, @startColor 0%, @middleColor1 50%, @middleColor2 51%, @endColor 100%);
+}
+
+.gradient-v3colors (@startColor : #00b3ee, @middleColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f)
+{
+    background-color             : mix(@middleColor, @endColor, 80%);
+    background-image             : -webkit-gradient(linear, left top, left bottom, from(@startColor), color-stop(@colorStop, @middleColor), to(@endColor));
+    background-image             : -webkit-linear-gradient(@startColor, @middleColor @colorStop, @endColor);
+    background-image             : -moz-linear-gradient(top, @startColor, @middleColor @colorStop, @endColor);
+    background-image             : -o-linear-gradient(@startColor, @middleColor @colorStop, @endColor);
+    background-image             : linear-gradient(@startColor, @middleColor @colorStop, @endColor);
+    filter                       : e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='%d', endColorstr='%d')", @startColor, @endColor));
+}
+
+
+.gradient-radial (@innerColor : #EEE, @outerColor: #FFF)
+{
+	background-color             : @outerColor;
+	background-image             : -webkit-gradient(radial, 50% 50%, 200, 50% 50%, 20, from(@outerColor), to(@innerColor));
+	background-image             : -webkit-radial-gradient(50% 50%, @innerColor, @outerColor);
+	background-image             : -moz-radial-gradient(50% 50%, @innerColor, @outerColor);
+	background-image             : -o-radial-gradient(50% 50%, @innerColor, @outerColor);
+	background-image             : radial-gradient(50% 50%, @innerColor, @outerColor);
+}
+
+
+/**
+ * Radius
+ */
+
+.rounded (@radius : 2px)
+{
+	-webkit-border-radius        : @radius;
+	        border-radius        : @radius;
+}
+
+
+
+  /**
+   * Transform
+   */
+
+.transform(...)
+{
+	-webkit-transform            : @arguments;
+	-moz-transform               : @arguments;
+	-o-transform                 : @arguments;
+	-ms-transform                : @arguments;
+	transform                    : @arguments;
+}
+
+/**
+ * Matrix
+ */
+
+.matrix (@rotate : 0.86, @scale: 0.5, @translate: -0.5, @skew: 0.86, @x: 0, @y: 0)
+{
+	-webkit-transform            : matrix(@rotate, @scale, @translate, @skew, @x, @y);
+	 -moz-transform              : matrix(@rotate, @scale, @translate, @skew, @x, @y);
+	  -ms-transform              : matrix(@rotate, @scale, @translate, @skew, @x, @y);
+	   -o-transform              : matrix(@rotate, @scale, @translate, @skew, @x, @y);
+	      transform              : matrix(@rotate, @scale, @translate, @skew, @x, @y);
+
+	filter                       : e(%("progid:DXImageTransform.Microsoft.Matrix(M11=%d, M12=%d, M21=%d, M22=%d, sizingMethod='auto expand')", @rotate, @scale, @translate, @skew));
+}
+
+.matrix3d (@values : "1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1")
+{
+	-webkit-transform            : matrix3d(e(@values));
+	 -moz-transform              : matrix3d(e(@values));
+	  -ms-transform              : matrix3d(e(@values));
+	   -o-transform              : matrix3d(e(@values));
+	      transform              : matrix3d(e(@values));
+}
+
+/**
+ * Rotate
+ */
+
+.rotate (@degrees : 5)
+{
+	-webkit-transform            : rotate(~"@{degrees}deg");
+	 -moz-transform              : rotate(~"@{degrees}deg");
+	  -ms-transform              : rotate(~"@{degrees}deg");
+	   -o-transform              : rotate(~"@{degrees}deg");
+	      transform              : rotate(~"@{degrees}deg");
+}
+
+.rotate3d (@x : 0, @y: 0, @z: 0, @degrees: 120)
+{
+	-webkit-transform            : rotate3d(@x, @y, @z, ~"@{degrees}deg");
+	 -moz-transform              : rotate3d(@x, @y, @z, ~"@{degrees}deg");
+	  -ms-transform              : rotate3d(@x, @y, @z, ~"@{degrees}deg");
+	   -o-transform              : rotate3d(@x, @y, @z, ~"@{degrees}deg");
+	      transform              : rotate3d(@x, @y, @z, ~"@{degrees}deg");
+}
+
+.rotate (@axis, @degrees : 120) when (@axis = x)
+{
+	-webkit-transform            : e(%('rotateX(%d)', ~"@{degrees}deg"));
+	 -moz-transform              : e(%('rotateX(%d)', ~"@{degrees}deg"));
+	  -ms-transform              : e(%('rotateX(%d)', ~"@{degrees}deg"));
+	   -o-transform              : e(%('rotateX(%d)', ~"@{degrees}deg"));
+	      transform              : e(%('rotateX(%d)', ~"@{degrees}deg"));
+}
+
+.rotate (@axis, @degrees : 10) when (@axis = y)
+{
+  -webkit-transform              : e(%('rotateY(%d)', ~"@{degrees}deg"));
+     -moz-transform              : e(%('rotateY(%d)', ~"@{degrees}deg"));
+      -ms-transform              : e(%('rotateY(%d)', ~"@{degrees}deg"));
+       -o-transform              : e(%('rotateY(%d)', ~"@{degrees}deg"));
+          transform              : e(%('rotateY(%d)', ~"@{degrees}deg"));
+}
+
+.rotate (@axis, @degrees : 10) when (@axis = z)
+{
+  -webkit-transform              : e(%('rotateZ(%d)', ~"@{degrees}deg"));
+     -moz-transform              : e(%('rotateZ(%d)', ~"@{degrees}deg"));
+      -ms-transform              : e(%('rotateZ(%d)', ~"@{degrees}deg"));
+       -o-transform              : e(%('rotateZ(%d)', ~"@{degrees}deg"));
+          transform              : e(%('rotateZ(%d)', ~"@{degrees}deg"));
+}
+
+/**
+ * Scale
+ */
+
+.scale (@ratio : 1)
+{
+	-webkit-transform            : scale(@ratio);
+	   -moz-transform            : scale(@ratio);
+	    -ms-transform            : scale(@ratio);
+	     -o-transform            : scale(@ratio);
+	        transform            : scale(@ratio);
+}
+
+.scale3d (@x : 1, @y: 1, @z: 1)
+{
+    -webkit-transform            : scale3d(@x, @y, @z);
+       -moz-transform            : scale3d(@x, @y, @z);
+        -ms-transform            : scale3d(@x, @y, @z);
+            transform            : scale3d(@x, @y, @z);
+}
+
+.scale (@axis, @value : 1) when (@axis = x)
+{
+    -webkit-transform            : e(%('scaleX(%d)', @value));
+       -moz-transform            : e(%('scaleX(%d)', @value));
+        -ms-transform            : e(%('scaleX(%d)', @value));
+         -o-transform            : e(%('scaleX(%d)', @value));
+            transform            : e(%('scaleX(%d)', @value));
+}
+
+.scale (@axis, @value : 1) when (@axis = y)
+{
+    -webkit-transform            : e(%('scaleY(%d)', @value));
+       -moz-transform            : e(%('scaleY(%d)', @value));
+        -ms-transform            : e(%('scaleY(%d)', @value));
+         -o-transform            : e(%('scaleY(%d)', @value));
+            transform            : e(%('scaleY(%d)', @value));
+}
+
+.scale (@axis, @value : 1) when (@axis = z)
+{
+    -webkit-transform            : e(%('scaleZ(%d)', @value));
+       -moz-transform            : e(%('scaleZ(%d)', @value));
+        -ms-transform            : e(%('scaleZ(%d)', @value));
+         -o-transform            : e(%('scaleZ(%d)', @value));
+            transform            : e(%('scaleZ(%d)', @value));
+}
+
+/**
+ * Translate
+ */
+
+.translate (@x : 0, @y: 0) when not (@x = x) and not (@x = y) and not (@x = z)
+{
+  -webkit-transform              : translate(@x * 1px, @y * 1px);
+     -moz-transform              : translate(@x * 1px, @y * 1px);
+      -ms-transform              : translate(@x * 1px, @y * 1px);
+       -o-transform              : translate(@x * 1px, @y * 1px);
+          transform              : translate(@x * 1px, @y * 1px);
+}
+
+.translate3d (@x : 0, @y: 0, @z: 0)
+{
+  -webkit-transform              : translate3d(@x * 1px, @y * 1px, @z * 1px);
+     -moz-transform              : translate3d(@x * 1px, @y * 1px, @z * 1px);
+      -ms-transform              : translate3d(@x * 1px, @y * 1px, @z * 1px);
+       -o-transform              : translate3d(@x * 1px, @y * 1px, @z * 1px);
+          transform              : translate3d(@x * 1px, @y * 1px, @z * 1px);
+}
+
+.translate (@axis, @x : 0) when (@axis = x)
+{
+  -webkit-transform              : e(%('translateX(%d)', @x * 1px));
+     -moz-transform              : e(%('translateX(%d)', @x * 1px));
+      -ms-transform              : e(%('translateX(%d)', @x * 1px));
+       -o-transform              : e(%('translateX(%d)', @x * 1px));
+          transform              : e(%('translateX(%d)', @x * 1px));
+}
+
+.translate (@axis, @y : 0) when (@axis = y)
+{
+  -webkit-transform              : e(%('translateY(%d)', @y * 1px));
+     -moz-transform              : e(%('translateY(%d)', @y * 1px));
+      -ms-transform              : e(%('translateY(%d)', @y * 1px));
+       -o-transform              : e(%('translateY(%d)', @y * 1px));
+          transform              : e(%('translateY(%d)', @y * 1px));
+}
+
+.translate (@axis, @z : 0) when (@axis = z)
+{
+  -webkit-transform              : e(%('translateZ(%d)', @z * 1px));
+     -moz-transform              : e(%('translateZ(%d)', @z * 1px));
+      -ms-transform              : e(%('translateZ(%d)', @z * 1px));
+       -o-transform              : e(%('translateZ(%d)', @z * 1px));
+          transform              : e(%('translateZ(%d)', @z * 1px));
+}
+
+/**
+ * Skew
+ */
+
+.skew (@degrees-x : 20, @degrees-y: 20) when not (@degrees-x = x) and not (@degrees-x = y)
+{
+    -webkit-transform            : skew(~"@{degrees-x}deg", ~"@{degrees-y}deg");
+       -moz-transform            : skew(~"@{degrees-x}deg", ~"@{degrees-y}deg");
+        -ms-transform            : skew(~"@{degrees-x}deg", ~"@{degrees-y}deg");
+         -o-transform            : skew(~"@{degrees-x}deg", ~"@{degrees-y}deg");
+            transform            : skew(~"@{degrees-x}deg", ~"@{degrees-y}deg");
+}
+
+.skew (@axis, @degrees-x : 20) when (@axis = x)
+{
+    -webkit-transform            : e(%('skewX(%d)', ~"@{degrees-x}deg"));
+       -moz-transform            : e(%('skewX(%d)', ~"@{degrees-x}deg"));
+        -ms-transform            : e(%('skewX(%d)', ~"@{degrees-x}deg"));
+         -o-transform            : e(%('skewX(%d)', ~"@{degrees-x}deg"));
+            transform            : e(%('skewX(%d)', ~"@{degrees-x}deg"));
+}
+
+.skew (@axis, @degrees-y : 20) when (@axis = y)
+{
+    -webkit-transform            : e(%('skewY(%d)', ~"@{degrees-y}deg"));
+       -moz-transform            : e(%('skewY(%d)', ~"@{degrees-y}deg"));
+        -ms-transform            : e(%('skewY(%d)', ~"@{degrees-y}deg"));
+         -o-transform            : e(%('skewY(%d)', ~"@{degrees-y}deg"));
+            transform            : e(%('skewy(%d)', ~"@{degrees-y}deg"));
+}
+
+/**
+ * Perspective
+ */
+
+.perspective (@value             : none, @unit: px)
+{
+	  -webkit-perspective        : @value;
+	     -moz-perspective        : ~"@{value}@{unit}";
+	      -ms-perspective        : @value; /* IE 10+ */
+	          perspective        : @value;
+}
+
+.perspective-origin (@values     : 50% 50%)
+{
+	  -webkit-perspective-origin : @values;
+	     -moz-perspective-origin : @values;
+	      -ms-perspective-origin : @values; /* IE 10+ */
+	          perspective-origin : @values;
+}
+
+.transform-origin (@x            : 50%, @y: 50%, @z: 0)
+{
+	  -webkit-transform-origin   : @arguments;
+	     -moz-transform-origin   : @arguments;
+	      -ms-transform-origin   : @arguments; /* IE 10+ */
+	       -o-transform-origin   : @arguments;
+	          transform-origin   : @arguments;
+}
+
+.transform-style (@value : flat)
+{ /* ( flat | preserve-3d ) */
+	  -webkit-transform-style    : @value;
+	     -moz-transform-style    : @value; /* FF 10+ */
+	      -ms-transform-style    : @value; /* IE 10+ */
+	          transform-style    : @value;
+}
+
+/**
+ * Opacity
+ */
+
+
+.opacity (@opacity : 0.5) when (isnumber(@opacity)) and not (@opacity < 0) and not (@opacity > 1)
+{
+	zoom: 1;
+    opacity: @opacity;
+    filter: e(%("alpha(opacity=%d)", @opacity*100));
+}
+
+/**
+ * Size
+ */
+
+.size (@width : 400, @height: 200)
+{
+	width: @width * 1px;
+	height: @height * 1px;
+}
+
+/**
+ * Clearfix
+ */
+
+.clearfix ()
+{
+  *zoom : 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
