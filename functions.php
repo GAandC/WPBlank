@@ -5,6 +5,7 @@ require $dir . '/inc/base.php';
 require $dir . '/inc/tags.php';
 require $dir . '/inc/comments.php';
 require $dir . '/inc/pagination.php';
+require $dir . '/inc/less_button.php';
 require $dir . '/app/assets.php';
 require $dir . '/app/custom_posts.php';
 require $dir . '/app/menus.php';
