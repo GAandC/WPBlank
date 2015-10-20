@@ -2,7 +2,7 @@
 
 
 function gaandc_wordpress_setup() {
-    
+
     // Translation
     // load_theme_textdomain( 'wordpress', get_template_directory() . '/languages' );
 
@@ -36,6 +36,14 @@ function gaandc_wordpress_setup() {
 
 }
 add_action( 'after_setup_theme', 'gaandc_wordpress_setup' );
+
+// Secutiry brut force
+function mmx_remove_xmlrpc_methods( $methods )
+{
+    unset( $methods['system.multicall'] );
+    return $methods;
+}
+add_filter( 'xmlrpc_methods', 'mmx_remove_xmlrpc_methods');
 
 
 
@@ -138,7 +146,7 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10);
 function script_loader_src_example( $src ) {
     return remove_query_arg( 'ver', $src );
 }
- 
+
 add_filter( 'script_loader_src', 'script_loader_src_example' );
 add_filter( 'style_loader_src', 'script_loader_src_example' );
 
@@ -174,5 +182,3 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
-
-
