@@ -182,6 +182,7 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
+remove_filter('the_content', 'wpautop');
 
 /**
  * Advanced Custom Fields Options function
