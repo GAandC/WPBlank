@@ -138,7 +138,7 @@ function gaandc_remove_thumbnail_dimensions( $html )
     return $html;
 }
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10);
-add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10);
+// add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10);
 
 
 
